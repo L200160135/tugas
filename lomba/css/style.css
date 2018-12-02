@@ -1,0 +1,44 @@
+a {
+    color: black;
+}
+
+a:hover {
+    color: gold;
+}
+
+
+img {
+    width: 560px;
+}
+
+.navt {
+    background-color: #222;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+section {
+    margin-top: 20 px;
+}
+.jumbotron {
+    height: 400px;
+    background:#333;
+    padding-top: 100px;
+}
+
+.jumbotron h1 {
+    margin-top: 180px;
+    color: #eee;
+}
+
+.jumbotron hr {
+    border: 2px solid #eee;
+    width: 250px;
+
+}
+
+#kecil {
+    border: 2px solid gold;
+    width: 50px;
+}
+
