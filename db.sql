@@ -10,6 +10,9 @@ CREATE TABLE tim (
 CREATE TABLE lomba(
     id_lomba int(100) auto_increment,
     kategori varchar(255),
+    deskripsi TEXT,
+    babak_penyisiham TEXT,
+    penilaian TEXT,
     CONSTRAINT pklomba PRIMARY KEY(id_lomba)
 );
 
@@ -27,15 +30,6 @@ CREATE TABLE peserta(
     constraint fktim foreign key(id_tim) references tim(id_tim) on delete cascade on update cascade
 );
 
-CREATE TABLE kamar(
-    id_kamar int(100),
-    no_kamar int(100),
-    nama_hotel varchar(255),
-    id_peserta int(100),
-    constraint pkkamar primary key(id_kamar),
-    constraint fkpeserta foreign key(id_peserta) references peserta(id_peserta) on delete cascade on update cascade
-);
-
 CREATE TABLE partisipasi(
     id_tim int(100),
     id_lomba int(100),
@@ -49,4 +43,13 @@ CREATE TABLE admin(
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
     CONSTRAINT pkadmin PRIMARY KEY(id_admin)
+);
+
+CREATE TABLE pengumuman (
+    id_pengumuman INT,
+    judul VARCHAR(45) NOT NULL,
+    subjudul VARCHAR(100),
+    isi TEXT NOT NULL,
+    gambar VARCHAR(255),
+    CONSTRAINT pkpengumuman PRIMARY KEY(id_pengumuman)
 );

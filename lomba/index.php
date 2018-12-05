@@ -1,3 +1,19 @@
+<?php
+  include("../koneksi.php");
+  
+  // mengambil id lomba yang di klik
+  $getId = $_GET['id'];
+  
+  // ambil data yang di klik dari database
+  $sql = "SELECT * FROM lomba WHERE id_lomba = $getId";
+  $result = mysqli_query($conn, $sql);
+  
+  // memecah data $result
+  $data = mysqli_fetch_assoc($result);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +47,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #000" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="http://localhost/NIC/index.php">National Informatics Competition 1</a>
+        <a class="navbar-brand js-scroll-trigger" href="http://localhost/tugasakhir/index.php">National Informatics Competition 1</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -60,46 +76,46 @@
 
     <!-- Header -->
     <div class="jumbotron text-center">
-      <h1>KATEGORI LOMBA</h1>
+      <h1>Kategori Lomba</h1>
       <hr>
     </div>
 
     <!-- kategori lomba -->
   
-    <!-- ui/ux design -->
-    <section class="uiux" id="uiux">
+    <!-- Lomba -->
+    <section class="lomba" id="lomba">
       <div class="container">
         <div class="row">
+
+          <!-- judul lomba -->
           <div class="col-sm-12 text-center">
-            <h1>UI/UX Design</h1>
+            <h1><?= $data['kategori'] ?></h1>
             <img src="img/uiux.jpg" alt="">
             <h4>Deskripsi Lomba</h4>
             <hr id="kecil">
           </div>
+
+          <!-- deskripsi lomba -->
           <div class="col-sm-8 offset-sm-2 text-justify">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deleniti unde omnis optio dolor ratione, expedita blanditiis perferendis dolore similique totam natus molestias quo saepe at nam quod fugiat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reprehenderit ratione at tempora quaerat ab suscipit minus! Tempore officia debitis repellendus rerum tenetur, veniam in consequuntur quis, mollitia ea minima.</p>
-            <p>keterangan lebih rinci sebagai berikut :</p>
-            <ol>
-              <li>skidipapap</li>
-              <li>sawadikap</li>
-              <li>slebew</li>
-              <li>slebew</li>
-              <li>chips ahoy</li>
-            </ol>
+            <p> <?= $data['deskripsi'] ?> </p>
             <br><br>
           </div>
+
+          <!-- babak penyisihan -->
           <div class="col-sm-6">
             <h4 class="text-center">Babak Penyisihan</h4>
             <hr id="kecil">
             <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
+              <p> <?= $data['babak_penyisihan'] ?> </p>
             </div>
           </div>
+
+          <!-- ketentuan penilaian -->
           <div class="col-sm-6">
             <h4 class="text-center">Ketentuan Penilain</h4>
             <hr id="kecil">
             <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
+              <p> <?= $data['penilaian'] ?> </p>
             </div>
           </div>
           <div class="col-sm-12">
@@ -109,220 +125,6 @@
       </div>
     </section>
 
-    <!-- programming  -->
-    <section class="programming" id="programming">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <h1>Programming</h1>
-            <img src="img/programming.png" alt="">
-            <h4>Deskripsi Lomba</h4>
-            <hr id="kecil">
-          </div>
-          <div class="col-sm-8 offset-sm-2 text-justify">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deleniti unde omnis optio dolor ratione, expedita blanditiis perferendis dolore similique totam natus molestias quo saepe at nam quod fugiat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reprehenderit ratione at tempora quaerat ab suscipit minus! Tempore officia debitis repellendus rerum tenetur, veniam in consequuntur quis, mollitia ea minima.</p>
-            <p>keterangan lebih rinci sebagai berikut :</p>
-            <ol>
-              <li>skidipapap</li>
-              <li>sawadikap</li>
-              <li>slebew</li>
-              <li>slebew</li>
-              <li>chips ahoy</li>
-            </ol>
-            <br><br>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Babak Penyisihan</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Ketentuan Penilain</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <hr>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- web security -->
-    <section class="websecurity" id="websecurity">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <h1>Web Security</h1>
-            <img src="img/programming.png" alt="">
-            <h4>Deskripsi Lomba</h4>
-            <hr id="kecil">
-          </div>
-          <div class="col-sm-8 offset-sm-2 text-justify">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deleniti unde omnis optio dolor ratione, expedita blanditiis perferendis dolore similique totam natus molestias quo saepe at nam quod fugiat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reprehenderit ratione at tempora quaerat ab suscipit minus! Tempore officia debitis repellendus rerum tenetur, veniam in consequuntur quis, mollitia ea minima.</p>
-            <p>keterangan lebih rinci sebagai berikut :</p>
-            <ol>
-              <li>skidipapap</li>
-              <li>sawadikap</li>
-              <li>slebew</li>
-              <li>slebew</li>
-              <li>chips ahoy</li>
-            </ol>
-            <br><br>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Babak Penyisihan</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Ketentuan Penilain</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <hr>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- it software for business -->
-    <section class="itbusiness" id="itbusiness">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <h1>IT Software for Business</h1>
-            <img src="img/programming.png" alt="">
-            <h4>Deskripsi Lomba</h4>
-            <hr id="kecil">
-          </div>
-          <div class="col-sm-8 offset-sm-2 text-justify">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deleniti unde omnis optio dolor ratione, expedita blanditiis perferendis dolore similique totam natus molestias quo saepe at nam quod fugiat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reprehenderit ratione at tempora quaerat ab suscipit minus! Tempore officia debitis repellendus rerum tenetur, veniam in consequuntur quis, mollitia ea minima.</p>
-            <p>keterangan lebih rinci sebagai berikut :</p>
-            <ol>
-              <li>skidipapap</li>
-              <li>sawadikap</li>
-              <li>slebew</li>
-              <li>slebew</li>
-              <li>chips ahoy</li>
-            </ol>
-            <br><br>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Babak Penyisihan</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Ketentuan Penilain</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <hr>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Data Mining -->
-    <section class="datamining" id="datamining">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <h1>Data Mining</h1>
-            <img src="img/programming.png" alt="">
-            <h4>Deskripsi Lomba</h4>
-            <hr id="kecil">
-          </div>
-          <div class="col-sm-8 offset-sm-2 text-justify">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deleniti unde omnis optio dolor ratione, expedita blanditiis perferendis dolore similique totam natus molestias quo saepe at nam quod fugiat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reprehenderit ratione at tempora quaerat ab suscipit minus! Tempore officia debitis repellendus rerum tenetur, veniam in consequuntur quis, mollitia ea minima.</p>
-            <p>keterangan lebih rinci sebagai berikut :</p>
-            <ol>
-              <li>skidipapap</li>
-              <li>sawadikap</li>
-              <li>slebew</li>
-              <li>slebew</li>
-              <li>chips ahoy</li>
-            </ol>
-            <br><br>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Babak Penyisihan</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Ketentuan Penilain</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <hr>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Game Development -->
-    <section class="gamedev" id="gamedev">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <h1>Game Development</h1>
-            <img src="img/programming.png" alt="">
-            <h4>Deskripsi Lomba</h4>
-            <hr id="kecil">
-          </div>
-          <div class="col-sm-8 offset-sm-2 text-justify">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, deleniti unde omnis optio dolor ratione, expedita blanditiis perferendis dolore similique totam natus molestias quo saepe at nam quod fugiat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque reprehenderit ratione at tempora quaerat ab suscipit minus! Tempore officia debitis repellendus rerum tenetur, veniam in consequuntur quis, mollitia ea minima.</p>
-            <p>keterangan lebih rinci sebagai berikut :</p>
-            <ol>
-              <li>skidipapap</li>
-              <li>sawadikap</li>
-              <li>slebew</li>
-              <li>slebew</li>
-              <li>chips ahoy</li>
-            </ol>
-            <br><br>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Babak Penyisihan</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4 class="text-center">Ketentuan Penilain</h4>
-            <hr id="kecil">
-            <div class="text-justify">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et qui cumque harum accusamus! Accusamus eos dolorem laboriosam, iste sequi soluta autem maxime repellendus, ea assumenda excepturi. Maxime autem consectetur quis.</p>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <hr>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- END kategori lomba -->
 

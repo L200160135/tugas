@@ -15,27 +15,37 @@ if(isset($_POST['submit'])){
   $password=$_POST['password'];
 
   // melakukan query
-  $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+  $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
   $result = mysqli_query($conn, $sql);
   
   $row = mysqli_fetch_array($result);
 
   // pencocokan login
   if($username == $row['username'] && $password == $row['password']){
+  
+    // jika login sbg Admin
+    if($row['fk_roles'] == 1){
+      // membuat session 
+      $_SESSION['admin'] = $username;
 
-    // membuat session 
-    $_SESSION['admin'] = $username;
-    header ("location: indexadmin.php");
-    ?>
-    <script language="javascript">
-      alert("login sukses");
-    </script>
+      header ("location: indexadmin.php");
+      ?>
+      <script language="javascript"> alert("login sebagai <?php $username ?>"); </script>
     <?php
+    } 
+    
+    // jika sebagai peserta
+    else {
+      $_SESSION['peserta'] = $username;
+      
+      header ("location: http://localhost/tugasakhir/index.php");
+    }
+    
   } else {
     ?>
     <!-- alert jika gagal -->
     <script language="javascript">
-      alert("gagal login");
+      alert("username or password is invalid");
       document.location="login.php";
     </script>
     

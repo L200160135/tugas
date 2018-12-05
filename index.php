@@ -1,3 +1,7 @@
+<?php
+  include ("koneksi.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +36,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">National Informatics Competition 1</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">National Informatics Competition</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -49,7 +53,7 @@
               <a class="nav-link js-scroll-trigger" href="#timeline">Timeline</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+              <a class="nav-link js-scroll-trigger" href="#">Pengumuman</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -68,7 +72,7 @@
         <div class="intro-text">
           <div class="intro-lead-in">Selamat Datang di Website Resmi</div>
           <div class="intro-heading text-uppercase">Natonal Informatics Competition</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#masthead">Unduh Panduan</a>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#">Unduh Panduan</a>
         </div>
       </div>
     </header>
@@ -138,6 +142,13 @@
 </div>
 
     <!-- lomba -->
+    <!-- ambil database tabel lomba -->
+    <?php
+      $sql = "SELECT * FROM lomba";
+      $result = mysqli_query($conn, $sql);
+      $data = mysqli_fetch_assoc($result);
+    ?>
+
     <section id="lomba">
       <div class="container">
         <div class="row">
@@ -152,7 +163,7 @@
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-mobile-alt fa-stack-1x fa-inverse"></i>
             </span>
-            <a href="#"><h4 class="service-heading">UI/UX Design</h4></a>
+            <a href="lomba/index.php?id=1"><h4 class="service-heading">UI/UX Design</h4></a>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
           <div class="col-md-4">
@@ -160,7 +171,7 @@
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
             </span>
-            <a href="#"><h4 class="service-heading">Programming</h4></a>
+            <a href="lomba/index.php?id=2"><h4 class="service-heading">Programming</h4></a>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
           <div class="col-md-4">
@@ -168,7 +179,7 @@
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <a href="#"><h4 class="service-heading">Web Security</h4></a>
+            <a href="lomba/index.php?id=3"><h4 class="service-heading">Web Security</h4></a>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
         </div>
@@ -178,7 +189,7 @@
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </span>
-            <a href=""><h4 class="service-heading">IT Software for Business</h4></a>
+            <a href="lomba/index.php?id=4"><h4 class="service-heading">IT Software for Business</h4></a>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
           <div class="col-md-4">
@@ -186,7 +197,7 @@
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-database fa-stack-1x fa-inverse"></i>
             </span>
-            <a href=""><h4 class="service-heading">Data Mining</h4></a>
+            <a href="lomba/index.php?id=5"><h4 class="service-heading">Data Mining</h4></a>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
           <div class="col-md-4">
@@ -194,14 +205,14 @@
               <i class="fas fa-circle fa-stack-2x text-primary"></i>
               <i class="fas fa-gamepad fa-stack-1x fa-inverse"></i>
             </span>
-            <a href=""><h4 class="service-heading">Game Development</h4></a>
+            <a href="lomba/index.php?id=6"><h4 class="service-heading">Game Development</h4></a>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
         </div>
       </div>
     </section>
     <div class="container text-center">
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="http://localhost/tugasakhir/lomba/index.php">Lebih Lengkap</a> 
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#">Lebih Lengkap</a> 
     </div>
 
 
