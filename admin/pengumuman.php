@@ -157,13 +157,13 @@
           
         </section>
 
-        <!-- content Kamar-->
+        <!-- content Lomba-->
         <section class="content">
           
-          <!-- Tabel Kamar -->
+          <!-- Tabel Lomba -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Kamar</h3>
+              <h3 class="box-title">Pengumuman</h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -176,26 +176,28 @@
                 <table class="table table-hover table-striped">
                   <thead>
                     <th>ID</th>
-                    <th>No. Kamar</th>
-                    <th>Hotel</th>
-                    <th>ID Peserta</th>
-                    <th>Nama Peserta</th>
-                    <th>Jenis Kelamin</th>
+                    <th>Judul</th>
+                    <th>Subjudul</th>
+                    <th>Isi</th>
+                    <th>Gambar</th>
+                    <th>Action</th>
                   </thead>
 
                   <!-- isi tabel -->
                   <?php
-                  $query = "SELECT * FROM kamar, peserta WHERE kamar.id_peserta = peserta.id_peserta";
+                  $query = "SELECT * FROM pengumuman";
                   $result = mysqli_query($conn, $query);
                   while ($data = mysqli_fetch_assoc($result)) { ?>
                   <tbody>
                     <tr>
-                      <td><?= $data['id_kamar'] ?>     </td>
-                      <td><?= $data['no_kamar']?>      </td>
-                      <td><?= $data['nama_hotel'] ?>   </td>
-                      <td><?= $data['id_peserta']?>    </td>
-                      <td><?= $data['nama_peserta']?>  </td>
-                      <td><?= $data['jenis_kelamin']?> </td>
+                      <td><?= $data['id_pengumuman'] ?> </td>
+                      <td><?= $data['judul']?>          </td>
+                      <td><?= $data['subjudul'] ?>      </td>
+                      <td><?= $data['isi']?>            </td>
+                      <td><img src="<?= $data['gambar'] ?>" width="100" height="100" alt=""></td>
+                      <td><a href="upd_pengumuman.php?id=<?= $data['id_pengumuman'] ?>">update</a> |
+                          <a href="del_pengumuman.php?id=<?= $data['id_pengumuman'] ?>">delete</a>
+                      </td>
                     </tr>
                   </tbody>
                   <?php  
@@ -205,7 +207,7 @@
             </div>
             </div><!-- /.box-body -->
             <div class="box-footer">
-              <a href="index.php?page=tambah_berita"><button class="btn btn-info" data-toggle="tooltip" title="Tambah Data"><i class="fa fa-plus"></i> Tambah Data</button></a>
+              <a href="add_pengumuman.php"><button class="btn btn-info" data-toggle="tooltip" title="Tambah Data"><i class="fa fa-plus"></i> Tambah Data</button></a>
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
         </section><!-- /.content -->

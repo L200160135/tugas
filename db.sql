@@ -46,7 +46,7 @@ CREATE TABLE admin(
 );
 
 CREATE TABLE pengumuman (
-    id_pengumuman INT,
+    id_pengumuman INT AUTO_INCREMENT,
     judul VARCHAR(45) NOT NULL,
     subjudul VARCHAR(100),
     isi TEXT NOT NULL,

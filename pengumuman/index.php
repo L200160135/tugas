@@ -33,17 +33,31 @@
     <h1>PENGUMUMAN</h1>
 
     <?php 
+
         $sql = "SELECT * FROM pengumuman";
         $result = mysqli_query($conn, $sql);
+        $folder = "img/";
+    ?>
+        <table border=1> 
         
+        <?php
         while($data = mysqli_fetch_array($result)){
-            ?>
-            <h3><?= $data['judul'] ?></h3>
-            <p><?= $data['subjudul'] ?></p>
-            <p><a href="readmore.php?id=<?= $data['id_pengumuman'] ?>">read more...</a></p>
+        ?>
+            <tr>
+              <td rowspan=2> <img src="../admin/<?= $data['gambar'] ?>" width="100" alt=""> </td>
+              <td><h3><?= $data['judul'] ?></h3></td>
+            </tr>
+            <tr>
+              <td>
+                <p><?= $data['subjudul'] ?></p> <br> 
+                <a href="readmore.php?id=<?= $data['id_pengumuman'] ?>">read more...</a>
+              </td>
+            </tr>
+            
         <?php   
         }
     ?>
+        </table>
 
 
 
