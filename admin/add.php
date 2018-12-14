@@ -13,13 +13,15 @@ if(isset($_POST['simpan'])){
 	$alamat = $_POST['alamat'];
 	$email = $_POST['email'];
 	$instansi = $_POST['instansi'];
-	
+	$team = $_POST['tim'];
+	// $tim_id = $data['id_tim'];
 
 	$sql = "INSERT INTO peserta( nama_peserta, tempat_lahir, tgl_lahir, jenis_kelamin, 
-	alamat, email, instansi) VALUES ('$nama_peserta', '$tempat_lahir', '$tgl_lahir', '$jenis_kelamin', 
-	'$alamat', '$email', '$instansi')";
+	alamat, email, instansi, id_tim) VALUES ('$nama_peserta', '$tempat_lahir', '$tgl_lahir', '$jenis_kelamin', 
+	'$alamat', '$email', '$instansi', '$team' )";
 	//$query = mysqli_query($conn, $sql);
-	echo $sql;
+	mysqli_query($conn, $sql);
+	header("location: peserta.php");
 	/*if($query){
 		echo "<script>alert('iso');</script>";
 		header('location: peserta.php');
@@ -27,6 +29,7 @@ if(isset($_POST['simpan'])){
 	}else{
 		echo "<script>alert('raiso lur');</script>";
 	}*/
+
 }
 ?>
 
@@ -115,10 +118,25 @@ if(isset($_POST['simpan'])){
 		<td>:</td>
 		<td><input type="text" name="instansi"></td>
 	</tr>
+	<?php
+		$tampil_tim = "SELECT * FROM tim";
+		$result_tim = mysqli_query($conn, $tampil_tim);
+	?>
+
 	<tr>
 		<td>nama tim</td>
 		<td>:</td>
-		<td><input type="text" name="nama_tim"></td>
+		<td>
+			<select name="tim" id="tim">
+				<?php
+				while($data = mysqli_fetch_array($result_tim)){
+					?>
+					<option value="<?= $data['id_tim'] ?>"><?= $data['nama_tim'] ?></option>
+				<?php
+				}
+				?>
+			</select>
+		</td>
 	</tr>
 	<tr>
 		<td></td>

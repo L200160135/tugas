@@ -134,7 +134,7 @@
                 <li><a href="peserta.php"><i class="fa fa-circle-o"></i> Peserta</a></li>
                 <li><a href="tim.php"><i class="fa fa-circle-o"></i> Tim</a></li>
                 <li><a href="lomba.php"><i class="fa fa-circle-o"></i> Lomba</a></li>
-                <li><a href="kamar.php"><i class="fa fa-circle-o"></i> Kamar</a></li>
+                <li><a href="pengumuman.php"><i class="fa fa-circle-o"></i> Pengumuman</a></li>
               </ul>
             </li>
   

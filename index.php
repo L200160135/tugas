@@ -53,7 +53,7 @@
               <a class="nav-link js-scroll-trigger" href="#timeline">Timeline</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">Pengumuman</a>
+              <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/pengumuman/index.php">Pengumuman</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -212,7 +212,7 @@
       </div>
     </section>
     <div class="container text-center">
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#">Lebih Lengkap</a> 
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#">LEBIH LENGKAP</a> 
     </div>
 
 

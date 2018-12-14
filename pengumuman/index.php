@@ -1,4 +1,10 @@
-<?php include("../koneksi.php") ?>
+<?php 
+  include("../koneksi.php");
+
+  $sql = "SELECT * FROM pengumuman";
+  $result = mysqli_query($conn, $sql);
+  $folder = "img/";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +17,8 @@
     <meta name="author" content="">
 
     <title>PENGUMUMAN | National Informatics Competition</title>
+
+    
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,41 +33,119 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/agency.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
   </head>
   <body>
     
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">National Informatics Competition</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/index.php">Beranda</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/index.php#lomba" >Event</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#timeline">Timeline</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/pengumuman/index.php">Pengumuman</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#register" href="#">Register</a>
+            <li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <h1>PENGUMUMAN</h1>
+    <!-- Header -->
+    <div class="jumbotron text-center">
+      <h1>Pengumuman</h1>
+      <hr>
+    </div>
 
-    <?php 
+    <section class="pengumuman" id="pengumuman">
+      <div class="container">
+        <div class="row">
+          <div class="cols-sm-12 ">
+            <table>
+              <?php
+              while($data = mysqli_fetch_array($result)){ 
+              ?>
+                <tr>
+                  <td rowspan=2><img src="../admin/<?= $data['gambar'] ?>" alt=""></td>
+                  <td><h3><?= $data['judul'] ?></h3></td>
+                </tr>
+                <tr>
+                  <td>
+                   <p><?= $data['subjudul'] ?></p> <br> 
+                    <a href="readmore.php?id=<?= $data['id_pengumuman'] ?>">read more...</a>
+                   </td>
+                </tr>
+                <tr>
+                  <td colspan=4> <br> <hr></td>
+                </tr>
+              <?php
+              }
+              ?>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        $sql = "SELECT * FROM pengumuman";
-        $result = mysqli_query($conn, $sql);
-        $folder = "img/";
-    ?>
-        <table border=1> 
-        
-        <?php
-        while($data = mysqli_fetch_array($result)){
-        ?>
-            <tr>
-              <td rowspan=2> <img src="../admin/<?= $data['gambar'] ?>" width="100" alt=""> </td>
-              <td><h3><?= $data['judul'] ?></h3></td>
-            </tr>
-            <tr>
-              <td>
-                <p><?= $data['subjudul'] ?></p> <br> 
-                <a href="readmore.php?id=<?= $data['id_pengumuman'] ?>">read more...</a>
-              </td>
-            </tr>
-            
-        <?php   
-        }
-    ?>
-        </table>
-
-
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Tugas Akhir Pak Yogiek</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="../vendor/jquery/jquery.min.js"></script>

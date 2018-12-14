@@ -134,7 +134,7 @@
                 <li><a href="peserta.php"><i class="fa fa-circle-o"></i> Peserta</a></li>
                 <li><a href="tim.php"><i class="fa fa-circle-o"></i> Tim</a></li>
                 <li><a href="lomba.php"><i class="fa fa-circle-o"></i> Lomba</a></li>
-                <li><a href="kamar.php"><i class="fa fa-circle-o"></i> Kamar</a></li>
+                <li><a href="pengumuman.php"><i class="fa fa-circle-o"></i> Pengumuman</a></li>
               </ul>
             </li>
   
@@ -180,6 +180,7 @@
                     <th>Deskripsi</th>
                     <th>Keterangan Babak Penyisihan</th>
                     <th>Keterangan Penilaian</th>
+                    <th width="7%">Action</th>
                   </thead>
 
                   <!-- isi tabel -->
@@ -194,6 +195,10 @@
                       <td><?= $data['deskripsi'] ?>       </td>
                       <td><?= $data['babak_penyisihan']?> </td>
                       <td><?= $data['penilaian']?>        </td>
+                      <td>
+                        <a href="upd_lomba.php?id=<?= $data['id_lomba'] ?>">Edit</a> | 
+                        <a href="del_lomba.php?id=<?= $data['id_lomba'] ?>">Delete</a>
+                      </td>
                     </tr>
                   </tbody>
                   <?php  
