@@ -5,32 +5,48 @@
   session_start();
     
   if(isset($_SESSION['admin'])) {
+	
+	// jika di klik simpan
+	if (isset($_POST['simpan'])){
+		$kategori 	= $_POST['kategori'];
+		$deskripsi 	= $_POST['deskripsi'];
+		$bp	        = $_POST['babak_penyisihan'];
+		$penilaian 	= $_POST['penilaian'];
 
-  ?>
+		// insert ke database tabel lomba
+		$sql = "INSERT INTO lomba(kategori, deskripsi, babak_penyisihan, penilaian) VALUES ('$kategori', '$deskripsi', '$bp', '$penilaian')";
+		mysqli_query($conn, $sql);
+
+		// redirect
+		header ("location: lomba.php");
+	
+	}
+	  ?>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin | Lomba Kompetensi Mahasiswa</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
+	<title>Admin | Lomba Kompetensi Mahasiswa</title>
+	<!-- anu -->
+    	<!-- Tell the browser to be responsive to screen width -->
+    	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    	<!-- Bootstrap 3.3.5 -->
+    	<link rel="stylesheet" href="assets/css/bootstrap.css">
+    	<!-- Font Awesome -->
+   		 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    	<!-- Theme style -->
+    	<link rel="stylesheet" href="assets/css/AdminLTE.min.css">
+    	<!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="assets/css/skins/_all-skins.css">
-    <!-- data tables-->
-    <link href="../plugin/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-    <!-- bootstrap file input -->
-    <link href="../plugin/fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-    <!-- bootstrap validatin -->
-    <link href="../plugin/form_validation/style.css" media="all" rel="stylesheet" type="text/css" />
+    	<link rel="stylesheet" href="assets/css/skins/_all-skins.css">
+    	<!-- data tables-->
+    	<link href="../plugin/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    	<!-- bootstrap file input -->
+    	<link href="../plugin/fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    	<!-- bootstrap validatin -->
+    	<link href="../plugin/form_validation/style.css" media="all" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -157,61 +173,65 @@
           
         </section>
 
-        <!-- content Lomba-->
+        <!-- content PENGUMUMAN-->
         <section class="content">
           
-          <!-- Tabel Lomba -->
+          <!-- Tabel PENGUMUMAN -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Lomba</h3>
+              <h3 class="box-title"> Tambah lomba</h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
          
-            <!-- header kolom  -->
+            <!-- FORM NYA  -->
             <div class="box-body">
               <div class="content table-responsive table-full-width">                                
-                <table class="table table-hover table-striped">
-                  <thead>
-                    <th>ID</th>
-                    <th>Nama Lomba</th>
-                    <th>Deskripsi</th>
-                    <th>Keterangan Babak Penyisihan</th>
-                    <th>Keterangan Penilaian</th>
-                    <th width="7%">Action</th>
-                  </thead>
+			  <form method="post" enctype="multipart/form-data">
 
-                  <!-- isi tabel -->
-                  <?php
-                  $query = "SELECT * FROM lomba";
-                  $result = mysqli_query($conn, $query);
-                  while ($data = mysqli_fetch_assoc($result)) { ?>
-                  <tbody>
-                    <tr>
-                      <td><?= $data['id_lomba'] ?>        </td>
-                      <td><?= $data['kategori']?>         </td>
-                      <td><?= $data['deskripsi'] ?>       </td>
-                      <td><?= $data['babak_penyisihan']?> </td>
-                      <td><?= $data['penilaian']?>        </td>
-                      <td>
-                        <a href="upd_lomba.php?id=<?= $data['id_lomba'] ?>">Update</a> | 
-                        <a href="del_lomba.php?id=<?= $data['id_lomba'] ?>">Delete</a>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <?php  
-                  }
-                  ?>
-                </table>
-            </div>
-            </div><!-- /.box-body -->
+				<!-- input judul -->
+  				<div class="form-group row">
+    		      <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Lomba</label>
+    			  <div class="col-sm-10">
+     				<input type="text" name="kategori" class="form-control" id="inputEmail3" placeholder="Kategori Lomba">
+    			  </div>
+  				</div>            
+				
+				<!-- input Deskripsi -->
+				<div class="form-group row">
+					<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi Lomba</label>
+					<div class="col-sm-10">
+						<textarea name="deskripsi" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+					</div>
+  				</div>
+
+				<!-- input Babak Penyisihan -->
+				<div class="form-group row">
+					<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Babak Penyisihan</label>
+					<div class="col-sm-10">
+						<textarea name="babak_penyisihan" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+					</div>
+  				</div>
+
+                <!-- input Penilaian -->
+				<div class="form-group row">
+					<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Penilaian Lomba</label>
+					<div class="col-sm-10">
+						<textarea name="penilaian" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+					</div>
+  				</div>
+	
+				</div>
+			</div>
+			
+			<!-- footer box -->
             <div class="box-footer">
-
-            <!-- button Tambah Lomba -->
-              <a href="add_lomba.php"><button class="btn btn-info" data-toggle="tooltip" title="Tambah Data"><i class="fa fa-plus"></i> Tambah Data</button></a>
-            </div><!-- /.box-footer-->
+				<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+				<button type="reset" name="reset" class="btn btn-primary">Reset</button>
+			</div><!-- /.box-footer-->
+			  </form>
           </div><!-- /.box -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

@@ -55,13 +55,13 @@
             <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/index.php#lomba" >Event</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#timeline">Timeline</a>
+              <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/index.php#timeline">Timeline</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/pengumuman/index.php">Pengumuman</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="http://localhost/tugasakhir/index.php#contact">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#register" href="#">Register</a>

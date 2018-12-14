@@ -204,8 +204,8 @@
                       <td><?= $data['instansi']?>       </td>
                       <td><?= $data['nama_tim'] ?>      </td>
                       <td>
-                        <a href="update_peserta.php?id=<?= $data['id_peserta']?>">Update</a> |
-                        <a href="delete_peserta.php?id=<?= $data['id_peserta']?>">Delete</a>
+                        <a href="upd_peserta.php?id=<?= $data['id_peserta']?>">Update</a> |
+                        <a href="del_peserta.php?id=<?= $data['id_peserta']?>">Delete</a>
                       </td>
                     </tr>
                   </tbody>
@@ -216,7 +216,7 @@
             </div>
             </div><!-- /.box-body -->
             <div class="box-footer">
-              <a href="add.php"><button class="btn btn-info" data-toggle="tooltip" title="Tambah Data"><i class="fa fa-plus"></i> Tambah Data</button></a>
+              <a href="add_peserta.php"><button class="btn btn-info" data-toggle="tooltip" title="Tambah Data"><i class="fa fa-plus"></i> Tambah Data</button></a>
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
         </section><!-- /.content -->
